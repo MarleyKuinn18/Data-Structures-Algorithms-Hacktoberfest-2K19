@@ -5,12 +5,16 @@ using namespace std;
 Given a text and a wildcard pattern, implement wildcard pattern matching algorithm that finds
 if wildcard pattern is matched with a string or not. The matching should cover the entire text (not partial text).
 
-The wildcard pattern can include the characters ‘?’ and ‘*’
-‘?’ – matches any single character
-‘*’ – Matches any sequence of characters (including the empty sequence)
+The wildcard pattern can include the characters â€˜?â€™ and â€˜*â€™
+â€˜?â€™ â€“ matches any single character
+â€˜*â€™ â€“ Matches any sequence of characters (including the empty sequence)
 */
-bool matchString(string s, string pattern, int n, int m){     // function that checks whether a given string and a pattern
+bool matchString(const string s, const string pattern){     // function that checks whether a given string and a pattern
                                                              // are equivalent or not
+	
+	int m = pattern.size();
+	int n = s.size();
+	
 	if(m==0)
 	  return (n==0);
 	
@@ -28,9 +32,9 @@ bool matchString(string s, string pattern, int n, int m){     // function that c
         for (int j = 1; j <= m; j++) 
         { 
             // Two cases if we see a '*' 
-            // either ignore ‘*’ character and move 
+            // either ignore â€˜*â€™ character and move 
             // to next  character in the pattern, 
-            // i.e., ‘*’ indicates an empty sequence. 
+            // i.e., â€˜*â€™ indicates an empty sequence. 
             // or '*' character matches with ith 
             // character in input 
             if (pattern[j - 1] == '*') 
@@ -54,10 +58,10 @@ bool matchString(string s, string pattern, int n, int m){     // function that c
 // driver program to test the above function
 int main() 
 { 
-    string str = "baaabab"; 
-    string pattern = "ba*****ab"; 
+    const string str = "baaabab"; 
+    const string pattern = "ba*****ab"; 
      
-    if (matchString(str, pattern, str.size(), pattern.size())==true) 
+    if (matchString(str, pattern)==true) 
         cout<<"Yes"<<endl; 
     else
         cout<<"No"<<endl; 
